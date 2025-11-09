@@ -1,4 +1,3 @@
-Here’s a full, modern README for your project. Copy and paste this to replace your current README:
 
 ---
 
