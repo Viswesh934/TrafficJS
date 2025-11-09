@@ -1,16 +1,16 @@
 
 ---
 
-# 🚦 TrafficJS
+# 🚦 TrafficJS-V
 
-**TrafficJS** is a TypeScript toolkit and server for system architecture, traffic analysis, storage, cost estimation, and real-time metrics monitoring.
+**TrafficJS-V** is a TypeScript toolkit and server for system architecture, traffic analysis, storage, cost estimation, and real-time metrics monitoring.
 
 ---
 
 ## 📦 Installation
 
 ```bash
-npm install trafficjs
+npm install trafficjs-v
 ```
 
 ---
@@ -22,10 +22,32 @@ npm install trafficjs
 Import and use calculation functions in your app:
 
 ```typescript
-import { trafficMetrics } from 'trafficjs';
-import { storageMetrics } from 'trafficjs';
-import { costEstimate } from 'trafficjs';
-import { availabilityMetrics } from 'trafficjs';
+
+# 🚦 TrafficJS-V
+
+**TrafficJS-V** is a TypeScript toolkit and server for system architecture, traffic analysis, storage, cost estimation, and real-time metrics monitoring.
+
+---
+
+## 📦 Installation
+
+```bash
+npm install trafficjs-v
+```
+
+---
+
+## Usage
+
+### 1. As a Library
+
+Import and use calculation functions in your app:
+
+```typescript
+import { trafficMetrics } from 'trafficjs-v';
+import { storageMetrics } from 'trafficjs-v';
+import { costEstimate } from 'trafficjs-v';
+import { availabilityMetrics } from 'trafficjs-v';
 
 const traffic = trafficMetrics({ users: 100000, reqPerUserPerDay: 100, payloadKB: 2 });
 const storage = storageMetrics({ dailyDataGB: traffic.dailyDataGB, retentionDays: 30 });
@@ -175,6 +197,165 @@ interface AvailabilityResult {
 ### E-commerce Platform Planning
 
 ```typescript
+import { trafficMetrics, storageMetrics, costEstimate } from 'trafficjs-v';
+
+// Black Friday traffic spike
+const peakTraffic = trafficMetrics({
+  users: 5_000_000,
+  reqPerUserPerDay: 200,
+  payloadKB: 5
+});
+
+console.log(`Peak RPS: ${peakTraffic.rps.toFixed(0)}`);
+// → Peak RPS: 11574
+
+// Storage for 6 months of data
+const storage = storageMetrics({
+  dailyDataGB: peakTraffic.dailyDataGB,
+  retentionDays: 180,
+  replicationFactor: 3
+});
+
+// AWS-like pricing
+const cost = costEstimate({
+  storageGB: storage.totalStorageGB,
+  storageCostPerGB: 0.023,
+  servers: 50,
+  serverCostPerMonth: 100
+});
+
+console.log(`Monthly cost: $${cost.monthlyCost.toLocaleString()}`);
+```
+
+### Microservice Architecture
+
+```typescript
+import { trafficMetrics, availabilityMetrics } from 'trafficjs-v';
+
+// API Gateway traffic
+const apiTraffic = trafficMetrics({
+  users: 100_000,
+  reqPerUserPerDay: 50,
+  payloadKB: 1
+});
+
+// Service availability requirements
+const availability = availabilityMetrics({ sla: 99.99 });
+
+console.log(`API RPS: ${apiTraffic.rps.toFixed(2)}`);
+console.log(`Allowed downtime: ${availability.downtimePerMonthMinutes.toFixed(1)} min/month`);
+```
+
+---
+
+## 🛠️ Development
+
+```bash
+# Clone the repository
+git clone https://github.com/Viswesh934/TrafficJS.git
+cd TrafficJS
+
+# Install dependencies
+npm install
+
+# Run the server
+npm run dev
+
+# Run example/demo scripts
+npm run example
+npm run demo
+npm run monitor
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the ISC License — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🔗 Links
+
+- [GitHub Repository](https://github.com/Viswesh934/TrafficJS)
+- [npm Package](https://www.npmjs.com/package/trafficjs-v)
+- [Issues](https://github.com/Viswesh934/TrafficJS/issues)
+
+---
+
+## 📊 Use Cases
+
+- **System Architecture Planning**: Estimate infrastructure requirements for new projects
+- **Capacity Planning**: Calculate scaling requirements for growing applications
+- **Cost Optimization**: Analyze and optimize infrastructure spending
+- **SLA Planning**: Understand availability requirements and downtime implications
+- **Performance Benchmarking**: Establish baseline metrics for system performance
+
+---
+
+Made with 🔥 by [Viswesh934](https://github.com/Viswesh934)
+}
+```
+
+### `costEstimate(input: CostInput): CostResult`
+
+Calculate monthly infrastructure costs.
+
+**Parameters:**
+```typescript
+interface CostInput {
+  storageGB: number;          // Storage in GB
+  storageCostPerGB: number;   // Cost per GB of storage
+  servers: number;            // Number of servers
+  serverCostPerMonth: number; // Monthly cost per server
+}
+```
+
+**Returns:**
+```typescript
+interface CostResult {
+  monthlyCost: number;        // Total monthly cost
+}
+```
+
+### `availabilityMetrics(input: AvailabilityInput): AvailabilityResult`
+
+Calculate downtime based on SLA.
+
+**Parameters:**
+```typescript
+interface AvailabilityInput {
+  sla: number;                // SLA percentage (e.g., 99.9)
+}
+```
+
+**Returns:**
+```typescript
+interface AvailabilityResult {
+  downtimePerMonthMinutes: number; // Monthly downtime in minutes
+  downtimePerYearHours: number;    // Yearly downtime in hours
+}
+```
+
+---
+
+## 📋 Usage Examples
+
+### E-commerce Platform Planning
+
+```typescript
 import { trafficMetrics, storageMetrics, costEstimate } from 'trafficjs';
 
 // Black Friday traffic spike
@@ -268,7 +449,7 @@ This project is licensed under the ISC License — see the LICENSE file for deta
 ## 🔗 Links
 
 - [GitHub Repository](https://github.com/Viswesh934/TrafficJS)
-- [npm Package](https://www.npmjs.com/package/trafficjs)
+- [npm Package](https://www.npmjs.com/package/trafficjs-v)
 - [Issues](https://github.com/Viswesh934/TrafficJS/issues)
 
 ---

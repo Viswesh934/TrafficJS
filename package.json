@@ -1,5 +1,5 @@
 {
-  "name": "trafficjs",
+  "name": "trafficjs-v",
   "version": "1.0.0",
   "description": "A lightweight TypeScript library for calculating system architecture metrics including traffic analysis, storage requirements, cost estimation, and availability planning.",
   "main": "dist/index.js",
