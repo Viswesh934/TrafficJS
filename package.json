@@ -1,0 +1,55 @@
+{
+  "name": "trafficjs",
+  "version": "1.0.0",
+  "description": "A lightweight TypeScript library for calculating system architecture metrics including traffic analysis, storage requirements, cost estimation, and availability planning.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+  "dev": "tsx src/server.ts",
+  "start": "tsx src/server.ts",
+  "example": "tsx src/demo/example.ts",
+  "demo": "tsx src/demo/realtimeDemo.ts",
+  "monitor": "tsx src/core/monitor.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Viswesh934/TrafficJS.git"
+  },
+  "keywords": [
+    "traffic-analysis",
+    "system-architecture",
+    "capacity-planning",
+    "cost-estimation",
+    "storage-calculation",
+    "availability-metrics",
+    "infrastructure-planning",
+    "typescript",
+    "devops",
+    "performance"
+  ],
+  "author": "Viswesh934",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Viswesh934/TrafficJS/issues"
+  },
+  "homepage": "https://github.com/Viswesh934/TrafficJS#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "systeminformation": "^5.27.11"
+  }
+}
